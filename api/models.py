@@ -10,9 +10,16 @@ class Audio(models.Model):
     url = models.URLField(max_length=300)
     description = models.CharField(max_length=500, blank=True)
 
+    def __str__(self):
+        return self.name
+
+
 
 class Word(models.Model):
     value = models.CharField(max_length=20, blank=False)
+
+    def __str__(self):
+        return self.value
 
 
 class Snippet(models.Model):
@@ -21,3 +28,6 @@ class Snippet(models.Model):
     start = models.IntegerField()
     end = models.IntegerField()
     url = models.URLField(max_length=300)
+
+    def __str__(self):
+        return self.audio.__str__() + " " + self.word.__str__()
