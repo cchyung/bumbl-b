@@ -5,3 +5,4 @@ pytz==2018.5
 pydub
 google-cloud-storage
 google-cloud-speech
+grpcio
