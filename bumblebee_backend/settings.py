@@ -79,7 +79,7 @@ DATABASES = {
         'NAME': 'bumblebee',
         'USER': 'admin',
         'PASSWORD': 'password',
-        'HOST': 'localhost',
+        'HOST': '35.202.218.167',
         'ENGINE': 'django.db.backends.postgresql_psycopg2'
     }
 }
