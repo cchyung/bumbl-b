@@ -1,4 +1,3 @@
-from __future__ import unicode_literals
 from api.models import Snippet
 
 def create_snippet(word, url, starttime, endtime):
