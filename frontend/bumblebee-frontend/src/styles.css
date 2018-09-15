@@ -1,0 +1,149 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+.page {
+  color: white;
+  font-family: 'Lato';
+  width: 100%;
+  background-image: linear-gradient(-227deg, #4E82F9 6%, #F12626 100%);
+}
+
+.header {
+    width: 100%;
+    padding: 40px 0;
+}
+
+.header img {
+  height: 65px;
+  width: 65px;
+  display: inline-block;
+  vertical-align: middle;
+  padding: 0 30px;
+  padding-left: 90px;
+}
+
+.header p {
+  display: inline-block;
+  vertical-align: middle;
+  font-family: 'Pacifico';
+  font-size: 45px;
+  padding: 0;
+  margin: 0;
+}
+
+.content {
+  position: relative;
+   top: 50%;
+   transform: perspective(1px) translateY(-150%);
+}
+
+#sentence {
+  font-family: 'Lato';
+  font-weight: lighter;
+  text-align: center;
+  color: white;
+  display: block;
+  border: none;
+  background: none;
+  margin: 0 auto;
+  width: 60%;
+  font-size: 50px;
+}
+
+#sentence::placeholder {
+  color: white;
+}
+
+/* Taken from https://codepen.io/sarath-ar/pen/dMKxxM */
+button{
+  position: relative;
+  border: none;
+  color: #fff;
+  font-size: 18px;
+  cursor: pointer;
+}
+span{
+  display: block;
+}
+button::before, button::after{
+  content:"";
+  width: 0;
+  height: 2px;
+  position: absolute;
+  transition: all 0.2s linear;
+  background: #fff;
+}
+
+span::before, span::after{
+  content:"";
+  width:2px;
+  height:0;
+  position: absolute;
+  transition: all 0.2s linear;
+  background: #fff;
+}
+button:hover::before, button:hover::after{
+  width: 100%;
+}
+button:hover span::before, button:hover span::after{
+  height: 100%;
+}
+/*----- button 1 -----*/
+.btn-1::before, .btn-1::after{
+  transition-delay: 0.2s;
+}
+.btn-1 span::before, .btn-1 span::after{
+  transition-delay: 0s;
+}
+.btn-1::before{
+  right: 0;
+  top: 0;
+}
+.btn-1::after{
+  left: 0;
+  bottom: 0;
+}
+.btn-1 span::before{
+  left: 0;
+  top: 0;
+}
+.btn-1 span::after{
+  right: 0;
+  bottom: 0;
+}
+.btn-1:hover::before, .btn-1:hover::after{
+  transition-delay: 0s;
+}
+.btn-1:hover span::before, .btn-1:hover span::after{
+  transition-delay: 0.2s;
+}
+
+.btn {
+  display: block;
+  margin: 50px auto;
+  background-color: rgba(0, 0, 0, 0.2);
+  font-family: 'Lato';
+  font-size: 20px;
+  /* border: 1px white solid; */
+  padding: 10px 60px;
+  color: white;
+  font-weight: lighter;
+}
