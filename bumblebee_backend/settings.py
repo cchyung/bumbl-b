@@ -79,7 +79,8 @@ DATABASES = {
         'NAME': 'bumblebee',
         'USER': 'admin',
         'PASSWORD': 'password',
-        'HOST': '35.202.218.167',
+        'HOST': 'localhost',
+        'PORT': 5432,
         'ENGINE': 'django.db.backends.postgresql_psycopg2'
     }
 }
