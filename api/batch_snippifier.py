@@ -84,13 +84,13 @@ def generate_snippet(file_name, word_info):
     return snippet_file_name
 
 
- '''
- 1. ) Convert an audio file to single channel wav
- 2. ) Submit each file to Google Speech API
- 3. ) Use start and end values to trim audio files into one word snippets
- 4. ) Upload snippets to GCS
- 5. ) Call Drew's function to add snippet info to DB
- '''
+ # '''
+ # 1. ) Convert an audio file to single channel wav
+ # 2. ) Submit each file to Google Speech API
+ # 3. ) Use start and end values to trim audio files into one word snippets
+ # 4. ) Upload snippets to GCS
+ # 5. ) Call Drew's function to add snippet info to DB
+ # '''
 def process_file(file_name):
     raw_file_name = file_name
     file_name = convert_to_wav(file_name)
@@ -103,3 +103,18 @@ def process_file(file_name):
         snippet_url = "gs://%s/%s" % (GCS_BUCKET, snippet_file_name)
 
         create_snippet(word_info["word"], raw_url, snippet_url, int(word_info["start"]), int(word_info["end"]))
+
+
+if not os.path.exists(LOCAL_RAW_PATH):
+    os.makedirs(LOCAL_RAW_PATH)
+
+if not os.path.exists(LOCAL_SNIPPET_PATH):
+    os.makedirs(LOCAL_SNIPPET_PATH)
+
+client = storage.Client()
+bucket=client.get_bucket(GCS_BUCKET)
+blobs=list(bucket.list_blobs(prefix=GCS_RAW_PATH))
+for blob in blobs:
+    if(not blob.name.endswith("/")):
+        blob.download_to_filename(blob.name)
+        process_file(blob.name)
