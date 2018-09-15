@@ -56,5 +56,5 @@ def get_more_snippets(request):
 
     # return snippets
     return (Response(
-        {'snippets': response}
+        response
     ))
