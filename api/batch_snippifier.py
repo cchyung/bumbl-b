@@ -9,7 +9,7 @@ from google.cloud.speech import types
 
 from google.cloud import storage
 
-from create_snippet import create_snippet
+from api import db_util
 
 GCS_BUCKET = "bumblebee-audiofiles"
 GCS_RAW_PATH = "raw"
@@ -72,7 +72,7 @@ def get_word_infos(file_name):
                 word_infos.append({
                     "word": word_info.word,
                     "start": word_info.start_time.seconds + word_info.start_time.nanos / 1000000000.0,
-                    "end": word_info.end_time.seconds + word_info.end_time.nanos / 1000000000.0
+                    "end": word_info.end_time.seconds + word_info.end_time.nanos / 1000000000.0 + 0.2
                 })
     return word_infos
 
@@ -92,29 +92,33 @@ def generate_snippet(file_name, word_info):
  # 5. ) Call Drew's function to add snippet info to DB
  # '''
 def process_file(file_name):
-    raw_file_name = file_name
     file_name = convert_to_wav(file_name)
     word_infos = get_word_infos(file_name)
+
+    raw_url = "gs://%s/%s" % (GCS_BUCKET, file_name)
+
+    formatted_file_name = file_name.replace(".mp3", "")
+    db_util.create_audio(formatted_file_name, raw_url, "")
+
     for word_info in word_infos:
         snippet_file_name = generate_snippet(file_name, word_info)
         upload_blob(GCS_BUCKET, snippet_file_name, snippet_file_name)
 
-        raw_url = "gs://%s/%s" % (GCS_BUCKET, raw_file_name)
         snippet_url = "gs://%s/%s" % (GCS_BUCKET, snippet_file_name)
 
-        create_snippet(word_info["word"], raw_url, snippet_url, int(word_info["start"]), int(word_info["end"]))
+        db_util.create_snippet(word_info["word"], raw_url, snippet_url, int(word_info["start"]), int(word_info["end"]))
 
+def start():
+    if not os.path.exists(LOCAL_RAW_PATH):
+        os.makedirs(LOCAL_RAW_PATH)
 
-if not os.path.exists(LOCAL_RAW_PATH):
-    os.makedirs(LOCAL_RAW_PATH)
+    if not os.path.exists(LOCAL_SNIPPET_PATH):
+        os.makedirs(LOCAL_SNIPPET_PATH)
 
-if not os.path.exists(LOCAL_SNIPPET_PATH):
-    os.makedirs(LOCAL_SNIPPET_PATH)
-
-client = storage.Client()
-bucket=client.get_bucket(GCS_BUCKET)
-blobs=list(bucket.list_blobs(prefix=GCS_RAW_PATH))
-for blob in blobs:
-    if(not blob.name.endswith("/")):
-        blob.download_to_filename(blob.name)
-        process_file(blob.name)
+    client = storage.Client()
+    bucket=client.get_bucket(GCS_BUCKET)
+    blobs=list(bucket.list_blobs(prefix=GCS_RAW_PATH))
+    for blob in blobs:
+        if(not blob.name.endswith("/")):
+            blob.download_to_filename(blob.name)
+            process_file(blob.name)
