@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit {
     this.httpService.processSentence(sentence).subscribe(
       snippets => {
         this.snippets = snippets;
+        console.log(snippets);
         this.loadAudio();
       }
     );
@@ -44,17 +45,25 @@ export class HomeComponent implements OnInit {
       audio.src = snippet.snippet.url;
       audio.load(); // load audio file and push
       this.audioFiles.push(audio);
+      console.log(this.audioFiles);
     }
     this.state = 2;
   }
 
   playSentence(): void {
-    for (const audio of this.audioFiles) {
-      // play file and delay for number of seconds of file duration
+    console.log('playSentence()');
+    this.playWord(0);
+  }
+
+  playWord(index: number): void {
+    if (index === this.audioFiles.length) {
+      return;
+    } else {
+      const audio = this.audioFiles[index];
+      audio.play();
       setTimeout(() => {
-        audio.play();
-        console.log(audio);
-      },  1000);
+        this.playWord(index + 1);
+      },  audio.duration * 1000 + 200);
     }
   }
 

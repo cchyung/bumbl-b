@@ -9,8 +9,7 @@ from api import signedurl
 from api import models, serializers
 
 def sign_snippet(snippet):
-    signedurl.sign_url(snippet.url)
-    signed_url = "new url"  # temp
+    signed_url = signedurl.public_url(snippet['url'].replace("gs://", "https://storage.googleapis.com/"))
 
     signed_snippet = {
         'url': signed_url,
