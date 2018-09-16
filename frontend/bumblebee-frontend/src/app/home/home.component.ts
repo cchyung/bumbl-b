@@ -42,10 +42,12 @@ export class HomeComponent implements OnInit {
   loadAudio(): void {
     for (const snippet of this.snippets) {
       const audio = new Audio();
-      audio.src = snippet.snippet.url;
-      audio.load(); // load audio file and push
-      this.audioFiles.push(audio);
-      console.log(this.audioFiles);
+      if (snippet.snippet) {
+        audio.src = snippet.snippet.url;
+        audio.load(); // load audio file and push
+        this.audioFiles.push(audio);
+        console.log(this.audioFiles);
+      }
     }
     this.state = 2;
   }
@@ -69,6 +71,9 @@ export class HomeComponent implements OnInit {
 
   startOver(): void {
     this.state = 0;
+    this.audioFiles = [];
+    this.newSnippets = [];
+    this.snippets = [];
   }
 
   getNewSnippets(index: number, word: string): void {
@@ -86,6 +91,8 @@ export class HomeComponent implements OnInit {
     console.log(`updating word ${this.wordToReplace} : ${this.snippets[this.wordToReplace].word} to ${this.newSnippets[index].audio.name}`);
     this.snippets[this.wordToReplace] = new SnippetListItem(this.snippets[this.wordToReplace].word, this.newSnippets[index]);
     this.state = 2;
+    this.audioFiles = []
+    this.loadAudio();
   }
 
   closeAlternatives(): void {
