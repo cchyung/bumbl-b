@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {Snippet} from './snippet';
+import { HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
+import {Snippet, SnippetListItem} from './snippet';
 import {Observable} from 'rxjs';
 
 @Injectable({
@@ -8,15 +8,13 @@ import {Observable} from 'rxjs';
 })
 export class HttpService {
 
-  private baseUrl = 'api/';
+  private baseUrl = 'api';
 
   constructor(private http: HttpClient) { }
 
-  processSentence(sentence: string): Observable<Snippet[]> {
+  processSentence(sentence: string): Observable<SnippetListItem[]> {
     const url = `${this.baseUrl}/process-sentence`;
-    const params: HttpParams = new HttpParams();
-    params.append('query', sentence);
-    return this.http.get<Snippet[]>(url, {params: params});
+    return this.http.get<SnippetListItem[]>(url, {params: {query: sentence}});
   }
 
   getSnippets(word: string): Observable<Snippet[]> {

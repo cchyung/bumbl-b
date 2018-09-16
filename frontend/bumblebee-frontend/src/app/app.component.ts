@@ -18,9 +18,9 @@ export class AppComponent implements OnInit {
   }
 
   resizeDiv() {
-    let vph = $(window).height();
+    const vph = $(window).height();
     if (vph > 500) {
-      $(".auto-resize").css({"height": vph + "px"});
+      $('.auto-resize').css({'height': vph + 'px'});
     }
   }
 }

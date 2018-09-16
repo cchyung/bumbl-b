@@ -50,9 +50,17 @@ time, mark, audio, video {
 }
 
 .content {
-  position: relative;
-   top: 50%;
-   transform: perspective(1px) translateY(-150%);
+  height: 100%;
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  display: flex;
+  align-items: center;
+}
+
+.content-inner {
+  margin: 0 auto;
+  width: 90%;
 }
 
 #sentence {
@@ -64,7 +72,7 @@ time, mark, audio, video {
   border: none;
   background: none;
   margin: 0 auto;
-  width: 60%;
+  width: 100%;
   font-size: 50px;
 }
 
