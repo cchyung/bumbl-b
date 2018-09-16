@@ -1,6 +1,43 @@
 <div class='content'>
-  <input #sentence id='sentence' type='text' name='sentence' placeholder="Type your sentence here...">
-  <button (click)="processSentence(sentence.value)" id='go-button' class='btn btn-1'>
-    <span>Go</span>
-  </button>
+  <div class='content-inner' *ngIf="state === 0">
+    <input #sentence id='sentence' type='text' name='sentence' placeholder="Type your sentence here...">
+    <button (click)="processSentence(sentence.value)" id='go-button' class='btn btn-1'>
+      <span>Go</span>
+    </button>
+  </div>
+
+  <div class='content-inner' *ngIf="state === 1">
+    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+  </div>
+
+  <div class='content-inner' *ngIf="state === 2">
+    <p class='translated-sentence'>
+      <span
+        class="sentence-word"
+
+        *ngFor="let snippet of snippets; let i = index"
+        (click)="snippet.snippet && getNewSnippets(i, snippet.word)"
+        [class.empty]="!snippet.snippet"
+        [class.selectable]="snippet.snippet"
+      >{{ snippet.word }}</span>
+    </p>
+
+    <div id='play-button' class='image-button' (click)="playSentence()"><img src="../../assets/img/play-button.png"></div>
+    <p class="start-over-button" (click)="startOver()">Start Over</p>
+  </div>
+
+  <div class='content-inner' *ngIf="state === 3">
+    <div *ngIf="newSnippets.length === 0">
+      <span class="no-alternatives-message">No Alternatives... :(</span>
+      <div class='image-button' (click)="closeAlternatives()"><img src="../../assets/img/close-button.png"></div>
+    </div>
+
+    <span
+      class="sentence-word snippet-alternative" *ngFor="let snippet of newSnippets; let i = index"
+      (click)="updateSnippet(i)"
+    >
+      {{ snippet.audio.name }}
+    </span>
+    <div class='image-button' (click)="closeAlternatives()"><img src="../../assets/img/close-button.png"></div>
+  </div>
 </div>

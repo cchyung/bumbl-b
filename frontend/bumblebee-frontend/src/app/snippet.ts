@@ -10,4 +10,9 @@ export class Snippet {
 export class SnippetListItem {
   word: string;
   snippet: Snippet;
+
+  constructor(word: string, snippet: Snippet) {
+    this.word = word;
+    this.snippet = snippet;
+  }
 }

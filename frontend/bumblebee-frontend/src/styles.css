@@ -50,9 +50,17 @@ time, mark, audio, video {
 }
 
 .content {
-  position: relative;
-   top: 50%;
-   transform: perspective(1px) translateY(-150%);
+  height: 100%;
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  display: flex;
+  align-items: center;
+}
+
+.content-inner {
+  margin: 0 auto;
+  width: 90%;
 }
 
 #sentence {
@@ -64,12 +72,94 @@ time, mark, audio, video {
   border: none;
   background: none;
   margin: 0 auto;
-  width: 60%;
+  width: 100%;
   font-size: 50px;
 }
 
 #sentence::placeholder {
   color: white;
+}
+
+.translated-sentence {
+  text-align: center;
+  font-family: 'Lato';
+  font-size: 50px;
+  font-weight: 900;
+}
+
+.selectable:hover {
+  cursor: pointer;
+  border-bottom: 2px solid white;
+}
+
+.translated-sentence span {
+  display: inline-block;
+  border-bottom: 2px solid rgba(0, 0, 0, 0);
+  transition: border-bottom-color 0.4s ease;
+  padding: 0px 4px;
+}
+
+.translated-sentence .empty {
+  text-decoration: line-through;
+  cursor: default;
+}
+
+.start-over-button {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 900;
+  transition: linear all 0.2s;
+}
+
+.start-over-button:hover {
+  cursor: pointer;
+  transform: translateY(5px);
+}
+
+.image-button {
+  display: block;
+  margin: 50px auto;
+  height: 40px;
+  width: 40px;
+  transition: linear all 0.4s;
+}
+
+.image-button:hover {
+  cursor: pointer;
+  transform: translateY(5px);
+}
+
+.image-button img {
+  height: 100%;
+  width: 100%;
+}
+
+.no-alternatives-message {
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+  font-size: 40px;
+}
+
+.snippet-alternative {
+  text-overflow: ellipsis;
+  /* Required for text-overflow to do anything */
+  white-space: nowrap;
+  overflow: hidden;
+  display: block;
+  text-align: center;
+
+  width: 50%;
+  margin: 0 auto;
+  font-size: 40px;
+
+  transition: all 0.4s ease;
+}
+
+.snippet-alternative:hover {
+  cursor: pointer;
+  transform: translateY(5px);
+
 }
 
 /* Taken from https://codepen.io/sarath-ar/pen/dMKxxM */
@@ -147,3 +237,44 @@ button:hover span::before, button:hover span::after{
   color: white;
   font-weight: lighter;
 }
+
+/* loader */
+.lds-ring {
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  margin: 6px;
+  border: 6px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* end loader */
+
+
