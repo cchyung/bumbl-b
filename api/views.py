@@ -4,11 +4,12 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.shortcuts import render
 from django.core.exceptions import ObjectDoesNotExist
+from api import signedurl
 
 from api import models, serializers
 
 def sign_snippet(snippet):
-    # TODO: call URL signing
+    signedurl.sign_url(snippet.url)
     signed_url = "new url"  # temp
 
     signed_snippet = {
