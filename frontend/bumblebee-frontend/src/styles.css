@@ -87,6 +87,11 @@ time, mark, audio, video {
   font-weight: 900;
 }
 
+.selectable:hover {
+  cursor: pointer;
+  border-bottom: 2px solid white;
+}
+
 .translated-sentence span {
   display: inline-block;
   border-bottom: 2px solid rgba(0, 0, 0, 0);
@@ -94,27 +99,46 @@ time, mark, audio, video {
   padding: 0px 4px;
 }
 
-.translated-sentence span:hover {
-  cursor: pointer;
-  border-bottom: 2px solid white;
+.translated-sentence .empty {
+  text-decoration: line-through;
+  cursor: default;
 }
 
-#play-button {
-  display: block;
-  margin: 40px auto;
-  height: 60px;
-  width: 60px;
-  transition: linear all 0.4s;
+.start-over-button {
+  text-align: center;
+  font-size: 24px;
+  font-weight: 900;
+  transition: linear all 0.2s;
 }
 
-#play-button:hover {
+.start-over-button:hover {
   cursor: pointer;
   transform: translateY(5px);
 }
 
-#play-button img {
+.image-button {
+  display: block;
+  margin: 50px auto;
+  height: 40px;
+  width: 40px;
+  transition: linear all 0.4s;
+}
+
+.image-button:hover {
+  cursor: pointer;
+  transform: translateY(5px);
+}
+
+.image-button img {
   height: 100%;
   width: 100%;
+}
+
+.no-alternatives-message {
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+  font-size: 40px;
 }
 
 .snippet-alternative {
@@ -122,8 +146,20 @@ time, mark, audio, video {
   /* Required for text-overflow to do anything */
   white-space: nowrap;
   overflow: hidden;
+  display: block;
+  text-align: center;
 
-  width: 25%;
+  width: 50%;
+  margin: 0 auto;
+  font-size: 40px;
+
+  transition: all 0.4s ease;
+}
+
+.snippet-alternative:hover {
+  cursor: pointer;
+  transform: translateY(5px);
+
 }
 
 /* Taken from https://codepen.io/sarath-ar/pen/dMKxxM */

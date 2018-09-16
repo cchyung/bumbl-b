@@ -9,8 +9,10 @@ import {Snippet, SnippetListItem} from '../snippet';
 })
 export class HomeComponent implements OnInit {
   state = 0;
+  wordToReplace = 0;
   snippets: SnippetListItem[];
   newSnippets: Snippet[];  // contains the new snippets if user wants to replace a word
+  audioFiles = [];
 
   /*
     State explanation:
@@ -30,23 +32,55 @@ export class HomeComponent implements OnInit {
     this.httpService.processSentence(sentence).subscribe(
       snippets => {
         this.snippets = snippets;
-        this.state = 2;
+        this.loadAudio();
       }
     );
     this.state = 1;
   }
 
-  playSentence(): void {
-    // Plays each audio file
+  loadAudio(): void {
+    for (const snippet of this.snippets) {
+      const audio = new Audio();
+      audio.src = snippet.snippet.url;
+      audio.load(); // load audio file and push
+      this.audioFiles.push(audio);
+    }
+    this.state = 2;
   }
 
-  getNewSnippets(word: string): void {
+  playSentence(): void {
+    for (const audio of this.audioFiles) {
+      // play file and delay for number of seconds of file duration
+      setTimeout(() => {
+        audio.play();
+        console.log(audio);
+      },  1000);
+    }
+  }
+
+  startOver(): void {
+    this.state = 0;
+  }
+
+  getNewSnippets(index: number, word: string): void {
+    this.state = 1; // show small loading spinner
+    this.wordToReplace = index;
     this.httpService.getSnippets(word).subscribe(
       snippets => {
         this.newSnippets = snippets;
         this.state = 3;
       }
     );
-    this.state = 1; // show small loading spinner
   }
+
+  updateSnippet(index: number): void {
+    console.log(`updating word ${this.wordToReplace} : ${this.snippets[this.wordToReplace].word} to ${this.newSnippets[index].audio.name}`);
+    this.snippets[this.wordToReplace] = new SnippetListItem(this.snippets[this.wordToReplace].word, this.newSnippets[index]);
+    this.state = 2;
+  }
+
+  closeAlternatives(): void {
+    this.state = 2;
+  }
+
 }

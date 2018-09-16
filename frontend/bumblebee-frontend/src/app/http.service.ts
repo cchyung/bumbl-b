@@ -21,6 +21,6 @@ export class HttpService {
     const url = `${this.baseUrl}/get-snippets`;
     const params: HttpParams = new HttpParams();
     params.append('query', word);
-    return this.http.get<Snippet[]>(url, {params: params});
+    return this.http.get<Snippet[]>(url, {params: {query: word}});
   }
 }
