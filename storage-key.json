@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "bumblebee-mit",
+  "private_key_id": "3629d12439393633c86e6aecc9970ab1fe9ca574",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDW3du1OC+G7vee\nGG3Crhe4i1uA2rnpTCwxjx6uMmeMrb/Dc6dBYKNFkAmHy2lS5tPJ7IHNOojfeGsU\npxBxToPrwDr9y4ByvPauGBtziH8SfqpUa7Gf0fDPDd0D/+Vtpk1x2jkvmlV/5wW3\nVS8h6yGBGRy/LQ2ttqLtrlwsSz0nETanz/1Zi/u+evoOtrEzplmVC79sTLB5nLOr\np1l1pcFZ7jItLLvRqOiC2IcnuEDbQsTdkKMZWTHb/T75C61T+pRecmcEAn7IPu1q\nr0ANLkMk4sWyidYNlMHY+W6eU1OhhCdpFR8Zyk3o3nYpG3mY0a4f2K5EGSCP/EQv\naj6+swOzAgMBAAECggEABSBC2xZtj9cIokVr7O6RU05DzxWoxMeT8FS9QyOhs8n7\nXrLWJSmki4bNq2cvapJmMBWL3TUNyeMKDvKTYligrhGmdqKRvGsEqY+arA1wFqVd\n8+ij0q/EAnSOtsc2loCWrWYq4hdY/dWpnb+TAcilwnoyZN8yydenGGuF+GqNGW71\nAFuBpvCv4+csEqQQDYkCzGFVq76CqPkjH/TjYb1GB36ogQDjEZXN/YsGoIkngGI9\nqHXTFOauaV1lhV5/Ue8JG1BvnW5jPhwCUky8dPHYi/zpw4onILktNschxjETLCgy\nGrGQYkaoskcfOpmuo0DZDs+SW4LfSzqJJrgTVNcgTQKBgQDxbYPLv+PcB2xDaf+k\nFz/snEf9cqtxxbQX5H1zJCF6iZWuVXrkneixpmn3lfeEuso7Cp5Pp+fFiNhzTQsW\ntElHsgMYepfj6jX5JUyTtijJR4Z21DC6NXPVhvwHVho7v7rCXF8o5lGL7yavu+yA\nUlanhoaEJYGlBxiNwb0/cSaxXwKBgQDj1e05y7REn2M0bDRG5Lg9GNXCnf2GgNs/\nf3INL0VGxRllMpXpdpNWpo9xmIB2c4bbvZT9cfkbwm7ni5RpCOqEshOgbRb9WsKP\nMiMaGELgzKqIQ/WcuWDfOpnYCu3MHdE2E2V5IjDM9MDxc9ROrH1uTJb81UhZNzaq\nBlJckFvqLQKBgQDo8aQS+alfaYIaYbIZn508LWaAsx2c/wdPblVkvV3YH9xeg3e6\nEmqszka8buSOGrR51zr83KMSw4Elbxbd50I1fRrjiZX4gMlnBYgnlcEwxGSHTyFc\n6apEQqP2aCuTruECG6Jtkhzoie2n7gi5n7igl3o/EvlOQ9R7Io35IrIUvQKBgChQ\n+bqJdmvSPI7ROur0nDmLhH/8zxkXAjUZS0hT/hFI3XaP3gFDD019CdMTJmBPjySh\nRpUWrvsfi9qDU47GmiFDFcAErdXFUrpeJ+H9OxBmhyK3y+Wg1CiMSR72yB+fgx7r\njcBCsZoDEYVodsA5O7Th7rHs1/GZmJ27oqVokis9AoGBAJjV2+GW7cX69472L/ck\nkKwwvMb2yahnTD7iFsDJOvp27cRyxws2YT2wdeOYjbTA71kkSSCbzr1pEcIDUfVG\ngScdx8Nbkymssr8Z187U5Z5siv4QDbaEfF40ScCG2zDLebM55pVyfJIuJadqDquO\nyOhBwv+yPa8YMzt1YJ0vACAr\n-----END PRIVATE KEY-----\n",
+  "client_email": "storage-admin@bumblebee-mit.iam.gserviceaccount.com",
+  "client_id": "116946506280929312488",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/storage-admin%40bumblebee-mit.iam.gserviceaccount.com"
+}

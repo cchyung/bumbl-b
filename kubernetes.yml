@@ -15,7 +15,7 @@ spec:
       containers:
       - name: bumblebee-app
         # Replace  with your project ID or use `make template`
-        image: us.gcr.io/bumblebee-mit/bumblebee:0.0.15
+        image: us.gcr.io/$PROJECT/bumblebee-app:$VERSION
         # This setting makes nodes pull the docker image every time before
         # starting the pod. This is useful when debugging, but should be turned
         # off in production.
@@ -37,8 +37,8 @@ spec:
         - containerPort: 5432
 
       # [START proxy_container]
-      - image: b.gcr.io/cloudsql-docker/gce-proxy:1.05
-        name: cloudsql-proxy
+      - name: cloudsql-proxy
+        image: b.gcr.io/cloudsql-docker/gce-proxy:1.05
         command: ["/cloud_sql_proxy", "--dir=/cloudsql",
                   "-instances=bumblebee-mit:us-central1:bumblebee=tcp:5432",
                   "-credential_file=/secrets/cloudsql/credentials.json"]
@@ -51,6 +51,19 @@ spec:
           - name: cloudsql
             mountPath: /cloudsql
       # [END proxy_container]
+      # [START indexer container]
+      - name: bumblebee-indexer
+        image: us.gcr.io/$PROJECT/bumblebee-indexer:$VERSION
+        imagePullPolicy: Always
+        volumeMounts:
+        - name: google-cloud-key
+          mountPath: /var/secrets/google
+        env:
+        - name: GOOGLE_APPLICATION_CREDENTIALS
+          value: /var/secrets/google/key.json
+        ports:
+        - containerPort: 80
+      # [END indexer container]
       # [START volumes]
       volumes:
         - name: cloudsql-oauth-credentials
@@ -61,6 +74,9 @@ spec:
             path: /etc/ssl/certs
         - name: cloudsql
           emptyDir:
+        - name: google-cloud-key
+          secret:
+            secretName: storage-key-2
       # [END volumes]
 # [END kubernetes_deployment]
 
