@@ -15,7 +15,7 @@ spec:
       containers:
       - name: bumblebee-app
         # Replace  with your project ID or use `make template`
-        image: us.gcr.io/bumblebee-mit/bumblebee:0.0.13
+        image: us.gcr.io/bumblebee-mit/bumblebee:0.0.15
         # This setting makes nodes pull the docker image every time before
         # starting the pod. This is useful when debugging, but should be turned
         # off in production.
