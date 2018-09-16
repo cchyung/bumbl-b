@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpService} from '../http.service';
-import {SnippetListItem} from '../snippet';
+import {Snippet, SnippetListItem} from '../snippet';
 
 @Component({
   selector: 'app-home',
@@ -10,6 +10,15 @@ import {SnippetListItem} from '../snippet';
 export class HomeComponent implements OnInit {
   state = 0;
   snippets: SnippetListItem[];
+  newSnippets: Snippet[];  // contains the new snippets if user wants to replace a word
+
+  /*
+    State explanation:
+    0: main screen
+    1: loading spinner
+    2: display sentence and play button
+    3: display alternatives
+   */
 
   constructor(private httpService: HttpService) { }
 
@@ -25,5 +34,19 @@ export class HomeComponent implements OnInit {
       }
     );
     this.state = 1;
+  }
+
+  playSentence(): void {
+    // Plays each audio file
+  }
+
+  getNewSnippets(word: string): void {
+    this.httpService.getSnippets(word).subscribe(
+      snippets => {
+        this.newSnippets = snippets;
+        this.state = 3;
+      }
+    );
+    this.state = 1; // show small loading spinner
   }
 }

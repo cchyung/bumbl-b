@@ -5,4 +5,22 @@
       <span>Go</span>
     </button>
   </div>
+
+  <div class='content-inner' *ngIf="state === 1">
+    <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+  </div>
+
+  <div class='content-inner' *ngIf="state === 2">
+    <p class='translated-sentence'>
+      <span class="sentence-word" *ngFor="let snippet of snippets">{{ snippet.word }}</span>
+    </p>
+
+    <div id='play-button' (click)="playSentence()"><img src="../../assets/img/play-button.png"></div>
+  </div>
+
+  <div class='content-inner' *ngIf="state === 3">
+    <span class="sentence-word snippet-alternative" *ngFor="let snippet of newSnippets ">
+      {{ snippet.audio.name }}
+    </span>
+  </div>
 </div>

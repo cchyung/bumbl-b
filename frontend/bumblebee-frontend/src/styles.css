@@ -80,6 +80,52 @@ time, mark, audio, video {
   color: white;
 }
 
+.translated-sentence {
+  text-align: center;
+  font-family: 'Lato';
+  font-size: 50px;
+  font-weight: 900;
+}
+
+.translated-sentence span {
+  display: inline-block;
+  border-bottom: 2px solid rgba(0, 0, 0, 0);
+  transition: border-bottom-color 0.4s ease;
+  padding: 0px 4px;
+}
+
+.translated-sentence span:hover {
+  cursor: pointer;
+  border-bottom: 2px solid white;
+}
+
+#play-button {
+  display: block;
+  margin: 40px auto;
+  height: 60px;
+  width: 60px;
+  transition: linear all 0.4s;
+}
+
+#play-button:hover {
+  cursor: pointer;
+  transform: translateY(5px);
+}
+
+#play-button img {
+  height: 100%;
+  width: 100%;
+}
+
+.snippet-alternative {
+  text-overflow: ellipsis;
+  /* Required for text-overflow to do anything */
+  white-space: nowrap;
+  overflow: hidden;
+
+  width: 25%;
+}
+
 /* Taken from https://codepen.io/sarath-ar/pen/dMKxxM */
 button{
   position: relative;
@@ -155,3 +201,44 @@ button:hover span::before, button:hover span::after{
   color: white;
   font-weight: lighter;
 }
+
+/* loader */
+.lds-ring {
+  display: block;
+  position: relative;
+  margin: 0 auto;
+  width: 100px;
+  height: 100px;
+}
+.lds-ring div {
+  box-sizing: border-box;
+  display: block;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  margin: 6px;
+  border: 6px solid #fff;
+  border-radius: 50%;
+  animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  border-color: #fff transparent transparent transparent;
+}
+.lds-ring div:nth-child(1) {
+  animation-delay: -0.45s;
+}
+.lds-ring div:nth-child(2) {
+  animation-delay: -0.3s;
+}
+.lds-ring div:nth-child(3) {
+  animation-delay: -0.15s;
+}
+@keyframes lds-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+/* end loader */
+
+
