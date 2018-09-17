@@ -65,7 +65,7 @@ def get_more_snippets(request):
         word_object = None
 
     if word_object is not None:
-        snippets = models.Snippet.objects.filter(word=word_object)
+        snippets = models.Snippet.objects.filter(word=word_object)[:5]
 
         for snippet in snippets:
             serializer = serializers.SnippetSerializer(snippet)

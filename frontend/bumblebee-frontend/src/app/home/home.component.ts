@@ -65,7 +65,7 @@ export class HomeComponent implements OnInit {
       audio.play();
       setTimeout(() => {
         this.playWord(index + 1);
-      },  audio.duration * 1000 + 200);
+      },  audio.duration * 900);
     }
   }
 
