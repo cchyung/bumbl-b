@@ -10,4 +10,4 @@ Audio files were indexed using Google's [Speech to Text API](https://cloud.googl
 The backend is built with [`django`](https://github.com/django/django) and [`django-rest-framework`](https://github.com/encode/django-rest-framework), and the frontend is built in [`angular`](https://github.com/angular/angular).
 
 ## Screen Cap
-<img src="media/screen-cap.gif" width=1024 height=650>
+![screen-cap](media/screen-cap.gif)
