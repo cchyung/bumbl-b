@@ -1,5 +1,5 @@
 # bumbl-b
-![banner](https://github.com/cchyung/bumbl-b/blob/master/media/banner.png)
+<img src="media/banner.png" width=550 height=250>
 
 Bumbl-B is a project built by [me](https://github.com/cchyung), [@DrewParsons](https://github.com/DrewParsons), and [@markhuds](https://github.com/markhuds).
 
@@ -10,4 +10,4 @@ Audio files were indexed using Google's [Speech to Text API](https://cloud.googl
 The backend is built with [`django`](https://github.com/django/django) and [`django-rest-framework`](https://github.com/encode/django-rest-framework), and the frontend is built in [`angular`](https://github.com/angular/angular).
 
 ## Screen Cap
-![screen cap](https://github.com/cchyung/bumbl-b/blob/master/media/screen-cap.gif)
+<img src="media/screen-cap.gif" width=1024 height=650>
